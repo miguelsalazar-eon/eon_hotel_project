@@ -1,4 +1,4 @@
-- dashboard: pickup
+- dashboard: pickup_dashboard
   title: Pick-Up
   layout: newspaper
   preferred_viewer: dashboards-next
