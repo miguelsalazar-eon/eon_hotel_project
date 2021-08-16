@@ -105,13 +105,13 @@ ON F1.codreserva = F2.codreserva
   }
 
   measure: count_codreservaF1 {
-    label: "Reservas F1"
+    label: "Reservas Fecha Inicio"
     type: number
     sql: COUNT(${TABLE}.codreservaF1) ;;
   }
 
   measure: count_codreservaF2 {
-    label: "Reservas F2"
+    label: "Reservas Fecha Final"
     type: number
     sql: COUNT(${TABLE}.codreservaF2) ;;
   }
