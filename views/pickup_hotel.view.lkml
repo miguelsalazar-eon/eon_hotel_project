@@ -15,7 +15,7 @@ FROM
 select
     reserv.hotel_id,
     reserv.codreserva,
-    FORMAT_DATE("%Y%m", reserv.fechaentrada) AnioMes,
+    FORMAT_DATE("%Y-%m", reserv.fechaentrada) AnioMes,
     reserv.fechaentrada,
     reserv.canal,
     reserv.tipohabitacionuso_id,
@@ -31,7 +31,7 @@ RIGHT OUTER JOIN
 select
     reserv.hotel_id,
     reserv.codreserva,
-    FORMAT_DATE("%Y%m", reserv.fechaentrada) AnioMes,
+    FORMAT_DATE("%Y-%m", reserv.fechaentrada) AnioMes,
     reserv.fechaentrada,
     reserv.canal,
     reserv.tipohabitacionuso_id,
