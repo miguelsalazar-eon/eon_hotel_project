@@ -74,9 +74,10 @@ ON F1.codreserva = F2.codreserva
   }
 
   dimension: aniomesentrada {
-    label: "Año Mes Entrada"
-    type: string
-    sql: ${TABLE}.AnioMes ;;
+    label: "Año Mes Ocupacion"
+    type: date
+    sql: DATE(CONCAT(${TABLE}.AnioMes,'-01')) ;;
+    html: {{ rendered_value | date: "%Y %B" }};;
   }
 
   dimension: canal {
