@@ -746,7 +746,7 @@
   - name: Fecha Inicio
     title: Fecha Inicio
     type: field_filter
-    default_value: 2020/03/03
+    default_value: 2019/10/03
     allow_multiple_values: true
     required: true
     ui_config:
@@ -760,7 +760,7 @@
   - name: Fecha Final
     title: Fecha Final
     type: field_filter
-    default_value: 2020/03/07
+    default_value: 2019/10/07
     allow_multiple_values: true
     required: true
     ui_config:
