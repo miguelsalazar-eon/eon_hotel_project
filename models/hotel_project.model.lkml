@@ -25,3 +25,9 @@ explore: pms_ocupante {}
 explore: pms_produccion {}
 
 explore: pms_reserva {}
+
+explore: pickup_analisis {
+  always_filter: {
+    filters: [fecha_inicio: "2020-03-03", fecha_final: "2020-03-07"]
+  }
+}
