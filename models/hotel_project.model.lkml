@@ -2,8 +2,9 @@ connection: "dwh_hotel_project"
 
 # include all the views
 include: "/views/**/*.view"
-# include: "/views/*.view"
-# include: "/views/*.view.lkml"
+
+# include all the dashboard
+include: "*.dashboard.lookml"
 
 datagroup: hotel_project_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
