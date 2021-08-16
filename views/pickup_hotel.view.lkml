@@ -155,4 +155,5 @@ ON F1.codreserva = F2.codreserva
       ${tipohabitacionuso_id}
     {% endif %};;
   }
+
 }
