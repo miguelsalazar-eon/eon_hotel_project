@@ -5,14 +5,14 @@
   elements:
   - title: ''
     name: ''
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: looker_grid
-    fields: [table_pickup.hotel_id, table_pickup.count_codreservaF1, table_pickup.count_codreservaF2,
-      table_pickup.crecimiento, table_pickup.aniomesentrada]
-    pivots: [table_pickup.aniomesentrada]
+    fields: [pickup_analisis.hotel_id, pickup_analisis.count_codreservaF1, pickup_analisis.count_codreservaF2,
+      pickup_analisis.crecimiento, pickup_analisis.aniomesentrada]
+    pivots: [pickup_analisis.aniomesentrada]
     filters: {}
-    sorts: [table_pickup.aniomesentrada]
+    sorts: [pickup_analisis.aniomesentrada]
     limit: 500
     show_view_names: false
     show_row_numbers: false
@@ -36,47 +36,47 @@
     show_totals: true
     show_row_totals: true
     series_labels:
-      table_pickup.count_codreservaF1: Reservas Fecha Inicio
-      table_pickup.count_codreservaF2: Reservas Fecha Final
-      table_pickup.aniomesentrada: Año-Mes Ocupación
+      pickup_analisis.count_codreservaF1: Reservas Fecha Inicio
+      pickup_analisis.count_codreservaF2: Reservas Fecha Final
+      pickup_analisis.aniomesentrada: Año-Mes Ocupación
     series_column_widths:
-      table_pickup.hotel_id: 163
+      pickup_analisis.hotel_id: 163
     series_cell_visualizations:
-      table_pickup.count_codreservaF1:
+      pickup_analisis.count_codreservaF1:
         is_active: false
     series_text_format:
-      table_pickup.aniomesentrada:
+      pickup_analisis.aniomesentrada:
         align: left
     conditional_formatting: [{type: along a scale..., value: !!null '', background_color: "#1A73E8",
         font_color: !!null '', color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2,
           palette_id: c65a64ce-7f46-476b-a320-41345941e5b1, options: {steps: 20, reverse: true,
             stepped: true}}, bold: false, italic: false, strikethrough: false, fields: [
-          table_pickup.count_codreservaF1, table_pickup.count_codreservaF2]}, {type: along
+          pickup_analisis.count_codreservaF1, pickup_analisis.count_codreservaF2]}, {type: along
           a scale..., value: !!null '', background_color: "#1A73E8", font_color: !!null '',
         color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2, palette_id: c65a64ce-7f46-476b-a320-41345941e5b1,
           options: {steps: 20, reverse: true, stepped: true}}, bold: false, italic: false,
-        strikethrough: false, fields: [table_pickup.crecimiento]}]
+        strikethrough: false, fields: [pickup_analisis.crecimiento]}]
     defaults_version: 1
     pinned_columns:
-      table_pickup.hotel_id: left
+      pickup_analisis.hotel_id: left
     column_order: []
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
-      Fecha Final: table_pickup.fecha_final
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
+      Fecha Final: pickup_analisis.fecha_final
     row: 16
     col: 0
     width: 24
     height: 6
   - title: Pick Up por Tipo Habitación
     name: Pick Up por Tipo Habitación
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: looker_grid
-    fields: [table_pickup.tipohabitacionuso_id, table_pickup.crecimiento, table_pickup.count_codreservaF1,
-      table_pickup.count_codreservaF2]
+    fields: [pickup_analisis.tipohabitacionuso_id, pickup_analisis.crecimiento, pickup_analisis.count_codreservaF1,
+      pickup_analisis.count_codreservaF2]
     filters: {}
-    sorts: [table_pickup.count_codreservaF1 desc]
+    sorts: [pickup_analisis.count_codreservaF1 desc]
     show_view_names: false
     show_row_numbers: false
     transpose: false
@@ -99,28 +99,28 @@
         steps: 5
         reverse: false
     show_sql_query_menu_options: false
-    column_order: [table_pickup.tipohabitacionuso_id, table_pickup.count_codreservaF1,
-      table_pickup.count_codreservaF2, table_pickup.crecimiento]
+    column_order: [pickup_analisis.tipohabitacionuso_id, pickup_analisis.count_codreservaF1,
+      pickup_analisis.count_codreservaF2, pickup_analisis.crecimiento]
     show_totals: true
     show_row_totals: true
     series_cell_visualizations:
-      table_pickup.crecimiento:
+      pickup_analisis.crecimiento:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF2:
+      pickup_analisis.count_codreservaF2:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF1:
+      pickup_analisis.count_codreservaF1:
         is_active: true
         palette:
           palette_id: c65a64ce-7f46-476b-a320-41345941e5b1
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
     series_text_format:
-      table_pickup.tipohabitacionuso_id:
+      pickup_analisis.tipohabitacionuso_id:
         bold: true
     limit_displayed_rows_values:
       show_hide: hide
@@ -128,12 +128,12 @@
       num_rows: 0
     x_axis_gridlines: false
     y_axis_gridlines: true
-    y_axes: [{label: '', orientation: left, series: [{axisId: table_pickup.count_codreservaF1,
-            id: table_pickup.count_codreservaF1, name: Reservas F1}, {axisId: table_pickup.count_codreservaF2,
-            id: table_pickup.count_codreservaF2, name: Reservas F2}], showLabels: true,
+    y_axes: [{label: '', orientation: left, series: [{axisId: pickup_analisis.count_codreservaF1,
+            id: pickup_analisis.count_codreservaF1, name: Reservas F1}, {axisId: pickup_analisis.count_codreservaF2,
+            id: pickup_analisis.count_codreservaF2, name: Reservas F2}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: right, series: [{axisId: table_pickup.crecimiento,
-            id: table_pickup.crecimiento, name: "% Crecimiento"}], showLabels: true,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: pickup_analisis.crecimiento,
+            id: pickup_analisis.crecimiento, name: "% Crecimiento"}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
         type: linear}]
     show_y_axis_labels: true
@@ -153,9 +153,9 @@
     series_types: {}
     point_style: circle_outline
     series_colors:
-      table_pickup.crecimiento: "#EA4335"
-      table_pickup.count_codreservaF2: "#12B5CB"
-      table_pickup.count_codreservaF1: "#1A73E8"
+      pickup_analisis.crecimiento: "#EA4335"
+      pickup_analisis.count_codreservaF2: "#12B5CB"
+      pickup_analisis.count_codreservaF1: "#1A73E8"
     series_point_styles: {}
     show_value_labels: true
     label_density: 25
@@ -172,22 +172,22 @@
     interpolation: linear
     title_hidden: true
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
-      Fecha Final: table_pickup.fecha_final
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
+      Fecha Final: pickup_analisis.fecha_final
     row: 4
     col: 14
     width: 10
     height: 10
   - title: Pick Up por Canal
     name: Pick Up por Canal
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: looker_column
-    fields: [table_pickup.canal, table_pickup.count_codreservaF1, table_pickup.count_codreservaF2,
-      table_pickup.crecimiento]
+    fields: [pickup_analisis.canal, pickup_analisis.count_codreservaF1, pickup_analisis.count_codreservaF2,
+      pickup_analisis.crecimiento]
     filters: {}
-    sorts: [table_pickup.count_codreservaF1 desc]
+    sorts: [pickup_analisis.count_codreservaF1 desc]
     limit: 500
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -222,12 +222,12 @@
       options:
         steps: 5
         reverse: false
-    y_axes: [{label: '', orientation: left, series: [{axisId: table_pickup.count_codreservaF1,
-            id: table_pickup.count_codreservaF1, name: Reservas F1}, {axisId: table_pickup.count_codreservaF2,
-            id: table_pickup.count_codreservaF2, name: Reservas F2}], showLabels: true,
+    y_axes: [{label: '', orientation: left, series: [{axisId: pickup_analisis.count_codreservaF1,
+            id: pickup_analisis.count_codreservaF1, name: Reservas F1}, {axisId: pickup_analisis.count_codreservaF2,
+            id: pickup_analisis.count_codreservaF2, name: Reservas F2}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: right, series: [{axisId: table_pickup.crecimiento,
-            id: table_pickup.crecimiento, name: "% Crecimiento"}], showLabels: true,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: pickup_analisis.crecimiento,
+            id: pickup_analisis.crecimiento, name: "% Crecimiento"}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
         type: linear}]
     limit_displayed_rows_values:
@@ -236,11 +236,11 @@
       num_rows: 0
     hide_legend: false
     series_types:
-      table_pickup.crecimiento: line
+      pickup_analisis.crecimiento: line
     series_colors:
-      table_pickup.crecimiento: "#EA4335"
-      table_pickup.count_codreservaF2: "#12B5CB"
-      table_pickup.count_codreservaF1: "#1A73E8"
+      pickup_analisis.crecimiento: "#EA4335"
+      pickup_analisis.count_codreservaF2: "#12B5CB"
+      pickup_analisis.count_codreservaF1: "#1A73E8"
     series_point_styles: {}
     show_dropoff: false
     defaults_version: 1
@@ -248,19 +248,19 @@
     interpolation: linear
     title_hidden: true
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
-      Fecha Final: table_pickup.fecha_final
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
+      Fecha Final: pickup_analisis.fecha_final
     row: 6
     col: 0
     width: 14
     height: 8
   - title: Reservaciones F2
     name: Reservaciones F2
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: single_value
-    fields: [table_pickup.count_codreservaF2]
+    fields: [pickup_analisis.count_codreservaF2]
     filters: {}
     limit: 10
     custom_color_enabled: true
@@ -289,23 +289,23 @@
     truncate_text: true
     size_to_fit: false
     series_cell_visualizations:
-      table_pickup.crecimiento:
+      pickup_analisis.crecimiento:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF2:
+      pickup_analisis.count_codreservaF2:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF1:
+      pickup_analisis.count_codreservaF1:
         is_active: true
         palette:
           palette_id: c65a64ce-7f46-476b-a320-41345941e5b1
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
     series_text_format:
-      table_pickup.tipohabitacionuso_id:
+      pickup_analisis.tipohabitacionuso_id:
         bold: true
     table_theme: editable
     limit_displayed_rows: false
@@ -318,12 +318,12 @@
     rows_font_size: '12'
     x_axis_gridlines: false
     y_axis_gridlines: true
-    y_axes: [{label: '', orientation: left, series: [{axisId: table_pickup.count_codreservaF1,
-            id: table_pickup.count_codreservaF1, name: Reservas F1}, {axisId: table_pickup.count_codreservaF2,
-            id: table_pickup.count_codreservaF2, name: Reservas F2}], showLabels: true,
+    y_axes: [{label: '', orientation: left, series: [{axisId: pickup_analisis.count_codreservaF1,
+            id: pickup_analisis.count_codreservaF1, name: Reservas F1}, {axisId: pickup_analisis.count_codreservaF2,
+            id: pickup_analisis.count_codreservaF2, name: Reservas F2}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: right, series: [{axisId: table_pickup.crecimiento,
-            id: table_pickup.crecimiento, name: "% Crecimiento"}], showLabels: true,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: pickup_analisis.crecimiento,
+            id: pickup_analisis.crecimiento, name: "% Crecimiento"}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
         type: linear}]
     show_y_axis_labels: true
@@ -343,9 +343,9 @@
     series_types: {}
     point_style: circle_outline
     series_colors:
-      table_pickup.crecimiento: "#EA4335"
-      table_pickup.count_codreservaF2: "#12B5CB"
-      table_pickup.count_codreservaF1: "#1A73E8"
+      pickup_analisis.crecimiento: "#EA4335"
+      pickup_analisis.count_codreservaF2: "#12B5CB"
+      pickup_analisis.count_codreservaF1: "#1A73E8"
     series_point_styles: {}
     show_value_labels: true
     label_density: 25
@@ -363,21 +363,21 @@
     hide_totals: false
     hide_row_totals: false
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
-      Fecha Final: table_pickup.fecha_final
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
+      Fecha Final: pickup_analisis.fecha_final
     row: 2
     col: 5
     width: 4
     height: 2
   - title: Reservaciones Fecha Inicio
     name: Reservaciones Fecha Inicio
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: single_value
-    fields: [table_pickup.count_codreservaF1]
+    fields: [pickup_analisis.count_codreservaF1]
     filters: {}
-    sorts: [table_pickup.count_codreservaF1 desc]
+    sorts: [pickup_analisis.count_codreservaF1 desc]
     limit: 10
     custom_color_enabled: true
     show_single_value_title: true
@@ -405,23 +405,23 @@
     truncate_text: true
     size_to_fit: false
     series_cell_visualizations:
-      table_pickup.crecimiento:
+      pickup_analisis.crecimiento:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF2:
+      pickup_analisis.count_codreservaF2:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF1:
+      pickup_analisis.count_codreservaF1:
         is_active: true
         palette:
           palette_id: c65a64ce-7f46-476b-a320-41345941e5b1
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
     series_text_format:
-      table_pickup.tipohabitacionuso_id:
+      pickup_analisis.tipohabitacionuso_id:
         bold: true
     table_theme: editable
     limit_displayed_rows: false
@@ -434,12 +434,12 @@
     rows_font_size: '12'
     x_axis_gridlines: false
     y_axis_gridlines: true
-    y_axes: [{label: '', orientation: left, series: [{axisId: table_pickup.count_codreservaF1,
-            id: table_pickup.count_codreservaF1, name: Reservas F1}, {axisId: table_pickup.count_codreservaF2,
-            id: table_pickup.count_codreservaF2, name: Reservas F2}], showLabels: true,
+    y_axes: [{label: '', orientation: left, series: [{axisId: pickup_analisis.count_codreservaF1,
+            id: pickup_analisis.count_codreservaF1, name: Reservas F1}, {axisId: pickup_analisis.count_codreservaF2,
+            id: pickup_analisis.count_codreservaF2, name: Reservas F2}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: right, series: [{axisId: table_pickup.crecimiento,
-            id: table_pickup.crecimiento, name: "% Crecimiento"}], showLabels: true,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: pickup_analisis.crecimiento,
+            id: pickup_analisis.crecimiento, name: "% Crecimiento"}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
         type: linear}]
     show_y_axis_labels: true
@@ -459,9 +459,9 @@
     series_types: {}
     point_style: circle_outline
     series_colors:
-      table_pickup.crecimiento: "#EA4335"
-      table_pickup.count_codreservaF2: "#12B5CB"
-      table_pickup.count_codreservaF1: "#1A73E8"
+      pickup_analisis.crecimiento: "#EA4335"
+      pickup_analisis.count_codreservaF2: "#12B5CB"
+      pickup_analisis.count_codreservaF1: "#1A73E8"
     series_point_styles: {}
     show_value_labels: true
     label_density: 25
@@ -479,19 +479,19 @@
     hide_totals: false
     hide_row_totals: false
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
-      Fecha Final: table_pickup.fecha_final
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
+      Fecha Final: pickup_analisis.fecha_final
     row: 2
     col: 0
     width: 4
     height: 2
   - title: "% Crecimiento"
     name: "% Crecimiento"
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: single_value
-    fields: [table_pickup.crecimiento]
+    fields: [pickup_analisis.crecimiento]
     filters: {}
     limit: 10
     custom_color_enabled: true
@@ -520,23 +520,23 @@
     truncate_text: true
     size_to_fit: false
     series_cell_visualizations:
-      table_pickup.crecimiento:
+      pickup_analisis.crecimiento:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF2:
+      pickup_analisis.count_codreservaF2:
         is_active: true
         palette:
           palette_id: b8e44ce6-d0e6-4bd4-b72c-ab0f595726a6
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
-      table_pickup.count_codreservaF1:
+      pickup_analisis.count_codreservaF1:
         is_active: true
         palette:
           palette_id: c65a64ce-7f46-476b-a320-41345941e5b1
           collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2
     series_text_format:
-      table_pickup.tipohabitacionuso_id:
+      pickup_analisis.tipohabitacionuso_id:
         bold: true
     table_theme: editable
     limit_displayed_rows: false
@@ -549,12 +549,12 @@
     rows_font_size: '12'
     x_axis_gridlines: false
     y_axis_gridlines: true
-    y_axes: [{label: '', orientation: left, series: [{axisId: table_pickup.count_codreservaF1,
-            id: table_pickup.count_codreservaF1, name: Reservas F1}, {axisId: table_pickup.count_codreservaF2,
-            id: table_pickup.count_codreservaF2, name: Reservas F2}], showLabels: true,
+    y_axes: [{label: '', orientation: left, series: [{axisId: pickup_analisis.count_codreservaF1,
+            id: pickup_analisis.count_codreservaF1, name: Reservas F1}, {axisId: pickup_analisis.count_codreservaF2,
+            id: pickup_analisis.count_codreservaF2, name: Reservas F2}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
-        type: linear}, {label: !!null '', orientation: right, series: [{axisId: table_pickup.crecimiento,
-            id: table_pickup.crecimiento, name: "% Crecimiento"}], showLabels: true,
+        type: linear}, {label: !!null '', orientation: right, series: [{axisId: pickup_analisis.crecimiento,
+            id: pickup_analisis.crecimiento, name: "% Crecimiento"}], showLabels: true,
         showValues: false, unpinAxis: true, tickDensity: default, tickDensityCustom: 5,
         type: linear}]
     show_y_axis_labels: true
@@ -574,9 +574,9 @@
     series_types: {}
     point_style: circle_outline
     series_colors:
-      table_pickup.crecimiento: "#EA4335"
-      table_pickup.count_codreservaF2: "#12B5CB"
-      table_pickup.count_codreservaF1: "#1A73E8"
+      pickup_analisis.crecimiento: "#EA4335"
+      pickup_analisis.count_codreservaF2: "#12B5CB"
+      pickup_analisis.count_codreservaF1: "#1A73E8"
     series_point_styles: {}
     show_value_labels: true
     label_density: 25
@@ -594,24 +594,24 @@
     hide_totals: false
     hide_row_totals: false
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
-      Fecha Final: table_pickup.fecha_final
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
+      Fecha Final: pickup_analisis.fecha_final
     row: 2
     col: 10
     width: 4
     height: 2
   - title: ''
     name: " (2)"
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     type: looker_grid
-    fields: [table_pickup.count_codreservaF1, table_pickup.count_codreservaF2, table_pickup.crecimiento,
-      table_pickup.aniomesentrada, table_pickup.dynamic_dim]
-    pivots: [table_pickup.aniomesentrada]
+    fields: [pickup_analisis.count_codreservaF1, pickup_analisis.count_codreservaF2, pickup_analisis.crecimiento,
+      pickup_analisis.aniomesentrada, pickup_analisis.dynamic_dim]
+    pivots: [pickup_analisis.aniomesentrada]
     filters:
-      table_pickup.fecha_final: 2019/10/08
-    sorts: [table_pickup.aniomesentrada, table_pickup.count_codreservaF1 desc 0]
+      pickup_analisis.fecha_final: 2019/10/08
+    sorts: [pickup_analisis.aniomesentrada, pickup_analisis.count_codreservaF1 desc 0]
     limit: 500
     show_view_names: false
     show_row_numbers: false
@@ -635,19 +635,19 @@
     show_totals: true
     show_row_totals: true
     series_labels:
-      table_pickup.aniomesentrada: Año-Mes Ocupación
-      table_pickup.count_codreservaF1: Reservas Fecha Inicio
-      table_pickup.count_codreservaF2: Reservas Fecha Final
+      pickup_analisis.aniomesentrada: Año-Mes Ocupación
+      pickup_analisis.count_codreservaF1: Reservas Fecha Inicio
+      pickup_analisis.count_codreservaF2: Reservas Fecha Final
     series_column_widths:
-      table_pickup.dynamic_dim: 179
+      pickup_analisis.dynamic_dim: 179
     series_cell_visualizations:
-      table_pickup.count_codreservaF1:
+      pickup_analisis.count_codreservaF1:
         is_active: false
-      table_pickup.crecimiento:
+      pickup_analisis.crecimiento:
         is_active: false
     series_text_format:
-      table_pickup.crecimiento: {}
-      table_pickup.aniomesentrada:
+      pickup_analisis.crecimiento: {}
+      pickup_analisis.aniomesentrada:
         bold: true
     limit_displayed_rows_values:
       show_hide: hide
@@ -660,18 +660,18 @@
           palette_id: c65a64ce-7f46-476b-a320-41345941e5b1, options: {steps: 20, constraints: {
               min: {type: minimum}, mid: {type: number, value: 0}, max: {type: maximum}},
             mirror: false, reverse: true, stepped: true}}, bold: false, italic: false,
-        strikethrough: false, fields: [table_pickup.count_codreservaF1, table_pickup.count_codreservaF2]},
+        strikethrough: false, fields: [pickup_analisis.count_codreservaF1, pickup_analisis.count_codreservaF2]},
       {type: along a scale..., value: !!null '', background_color: "#1A73E8", font_color: !!null '',
         color_application: {collection_id: 7c56cc21-66e4-41c9-81ce-a60e1c3967b2, palette_id: c65a64ce-7f46-476b-a320-41345941e5b1,
           options: {steps: 20, reverse: true, stepped: true}}, bold: false, italic: false,
-        strikethrough: false, fields: [table_pickup.crecimiento]}]
+        strikethrough: false, fields: [pickup_analisis.crecimiento]}]
     defaults_version: 1
     pinned_columns:
-      table_pickup.dynamic_dim: left
+      pickup_analisis.dynamic_dim: left
     column_order: []
     listen:
-      Dimensión: table_pickup.main_dim_selector
-      Fecha Inicio: table_pickup.fecha_inicio
+      Dimensión: pickup_analisis.main_dim_selector
+      Fecha Inicio: pickup_analisis.fecha_inicio
     row: 24
     col: 0
     width: 24
@@ -753,10 +753,10 @@
       type: advanced
       display: popover
       options: []
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     listens_to_filters: []
-    field: table_pickup.fecha_inicio
+    field: pickup_analisis.fecha_inicio
   - name: Fecha Final
     title: Fecha Final
     type: field_filter
@@ -767,10 +767,10 @@
       type: advanced
       display: popover
       options: []
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     listens_to_filters: []
-    field: table_pickup.fecha_final
+    field: pickup_analisis.fecha_final
   - name: Dimensión
     title: Dimensión
     type: field_filter
@@ -781,7 +781,7 @@
       type: dropdown_menu
       display: inline
       options: []
-    model: Excellent_Produccion
-    explore: table_pickup
+    model: hotel_project
+    explore: pickup_analisis
     listens_to_filters: []
-    field: table_pickup.main_dim_selector
+    field: pickup_analisis.main_dim_selector
