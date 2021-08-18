@@ -1,4 +1,5 @@
-connection: "dwh_hotel_project"
+# connection: "dwh_hotel_project"
+connection: "dwh_hotel_project2"
 
 # include all the views
 include: "/views/**/*.view"
