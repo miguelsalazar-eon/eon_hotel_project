@@ -31,6 +31,6 @@ explore: pms_reserva {}
 
 explore: pickup_analisis {
   always_filter: {
-    filters: [fecha_inicio: "2019-10-03", fecha_final: "2019-10-07"]
+    filters: [fecha_inicio: "2021-01-13", fecha_final: "2021-01-24"]
   }
 }
