@@ -2,92 +2,91 @@ view: pickup_analisis {
   # sql_table_name: `raw_excellence.pms_produccion`
   suggestions: no
   derived_table: {
-#     sql: select COALESCE(F1.hotel_id, F2.hotel_id) hotel_id
-#       ,F1.codreserva codreservaF1
-#       ,F2.codreserva codreservaF2
-#       ,COALESCE(F1.AnioMes, F2.AnioMes) AnioMes
-#       ,COALESCE(F1.canal, F2.canal) canal
-#       ,COALESCE(F1.tipohabitacionuso_id, F2.tipohabitacionuso_id) tipohabitacionuso_id
-#       ,COALESCE(F1.fechaventa, F2.fechaventa) fechaventa
-
-# FROM
-# (
-# select
-#     reserv.RESORT hotel_id,
-#     reserv.CONFIRMATION_NO codreserva,
-#     concat(EXTRACT(year from TIMESTAMP_MICROS(reserv.BEGIN_DATE)),'-',EXTRACT(month from TIMESTAMP_MICROS(reserv.BEGIN_DATE))) AnioMes,
-#     reserv.BEGIN_DATE fechaentrada,
-#     reserv.MARKET_GROUP canal,
-#     reserv.ROOM_CLASS tipohabitacionuso_id,
-#     TIMESTAMP_MICROS(reserv.RESERVATION_DATE) fechaventa
-# from  EON_raw.MX_VW_Data_VW_PROD_HISTORY reserv
-# WHERE reserv.RESV_STATUS IN ('DEFINITIVE','CHECKED IN')
-# AND DATE(reserv.RESERVATION_DATE) <=  DATE({% date_start fecha_inicio %})
-# and reserv.BEGIN_DATE BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
-#     AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
-#   and reserv.BEGIN_DATE is not NULL
-# ) F1
-# RIGHT OUTER JOIN
-# (
-# select
-#     reserv.RESORT hotel_id,
-#     reserv.CONFIRMATION_NO codreserva,
-#     concat(EXTRACT(year from TIMESTAMP_MICROS(reserv.BEGIN_DATE)),'-',EXTRACT(month from TIMESTAMP_MICROS(reserv.BEGIN_DATE))) AnioMes,
-#     reserv.BEGIN_DATE fechaentrada,
-#     reserv.MARKET_GROUP canal,
-#     reserv.ROOM_CLASS tipohabitacionuso_id,
-#     TIMESTAMP_MICROS(reserv.RESERVATION_DATE) fechaventa
-# from EON_raw.MX_VW_Data_VW_PROD_HISTORY reserv
-# where  reserv.RESV_STATUS IN ('DEFINITIVE','CHECKED IN')
-# AND DATE(reserv.RESERVATION_DATE) <=  DATE({% date_end fecha_final %})
-# and reserv.BEGIN_DATE BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
-# AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
-# and reserv.BEGIN_DATE is not NULL
-# ) F2
-# ON F1.codreserva = F2.codreserva ;;
-
     sql: select COALESCE(F1.hotel_id, F2.hotel_id) hotel_id
-            ,F1.codreserva codreservaF1
-            ,F2.codreserva codreservaF2
-            ,COALESCE(F1.AnioMes, F2.AnioMes) AnioMes
-            ,COALESCE(F1.canal, F2.canal) canal
-            ,COALESCE(F1.tipohabitacionuso_id, F2.tipohabitacionuso_id) tipohabitacionuso_id
-            ,COALESCE(F1.fechaventa, F2.fechaventa) fechaventa
+      ,F1.codreserva codreservaF1
+      ,F2.codreserva codreservaF2
+      ,COALESCE(F1.AnioMes, F2.AnioMes) AnioMes
+      ,COALESCE(F1.canal, F2.canal) canal
+      ,COALESCE(F1.tipohabitacionuso_id, F2.tipohabitacionuso_id) tipohabitacionuso_id
+      ,COALESCE(F1.fechaventa, F2.fechaventa) fechaventa
+FROM
+(
+select
+    reserv.RESORT hotel_id,
+    reserv.CONFIRMATION_NO codreserva,
+    concat(EXTRACT(year from TIMESTAMP_MICROS(reserv.BEGIN_DATE)),'-',EXTRACT(month from TIMESTAMP_MICROS(reserv.BEGIN_DATE))) AnioMes,
+    reserv.BEGIN_DATE fechaentrada,
+    reserv.MARKET_GROUP canal,
+    reserv.ROOM_CLASS tipohabitacionuso_id,
+    DATE(TIMESTAMP_MICROS(reserv.RESERVATION_DATE)) fechaventa
+from  EON_raw.MX_VW_Data_VW_PROD_HISTORY reserv
+WHERE reserv.RESV_STATUS IN ('DEFINITIVE','CHECKED IN')
+AND DATE( TIMESTAMP_MICROS(reserv.RESERVATION_DATE)) <=  DATE({% date_start fecha_inicio %})
+and DATE( TIMESTAMP_MICROS(reserv.BEGIN_DATE)) BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
+    AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
+  and reserv.BEGIN_DATE is not NULL
+) F1
+RIGHT OUTER JOIN
+(
+select
+    reserv.RESORT hotel_id,
+    reserv.CONFIRMATION_NO codreserva,
+    concat(EXTRACT(year from TIMESTAMP_MICROS(reserv.BEGIN_DATE)),'-',EXTRACT(month from TIMESTAMP_MICROS(reserv.BEGIN_DATE))) AnioMes,
+    reserv.BEGIN_DATE fechaentrada,
+    reserv.MARKET_GROUP canal,
+    reserv.ROOM_CLASS tipohabitacionuso_id,
+    DATE(TIMESTAMP_MICROS(reserv.RESERVATION_DATE)) fechaventa
+from EON_raw.MX_VW_Data_VW_PROD_HISTORY reserv
+where  reserv.RESV_STATUS IN ('DEFINITIVE','CHECKED IN')
+AND DATE( TIMESTAMP_MICROS(reserv.RESERVATION_DATE)) <=  DATE({% date_end fecha_final %})
+and DATE( TIMESTAMP_MICROS(reserv.BEGIN_DATE)) BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
+ AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
+ and reserv.BEGIN_DATE is not NULL
+ ) F2
+ON F1.codreserva = F2.codreserva ;;
 
-      FROM
-      (
-      select
-          reserv.hotel_id,
-          reserv.codreserva,
-          FORMAT_DATE("%Y-%m", reserv.fechaentrada) AnioMes,
-          reserv.fechaentrada,
-          reserv.canal,
-          reserv.tipohabitacionuso_id,
-          reserv.fechaventa
-      from  raw_excellence.pms_reserva reserv
-      WHERE reserv.estado IN (0,2,3)
-      AND DATE(reserv.fechaventa) <=  DATE({% date_start fecha_inicio %})
-      and reserv.fechaentrada BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
-          AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
-      ) F1
-      RIGHT OUTER JOIN
-      (
-      select
-          reserv.hotel_id,
-          reserv.codreserva,
-          FORMAT_DATE("%Y-%m", reserv.fechaentrada) AnioMes,
-          reserv.fechaentrada,
-          reserv.canal,
-          reserv.tipohabitacionuso_id,
-          reserv.fechaventa
-      from raw_excellence.pms_reserva reserv
-      where  reserv.estado IN (0,2,3)
-      AND DATE(reserv.fechaventa) <=  DATE({% date_end fecha_final %})
-      and reserv.fechaentrada BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
-          AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
-      ) F2
-      ON F1.codreserva = F2.codreserva
-            ;;
+    # sql: select COALESCE(F1.hotel_id, F2.hotel_id) hotel_id
+    #         ,F1.codreserva codreservaF1
+    #         ,F2.codreserva codreservaF2
+    #         ,COALESCE(F1.AnioMes, F2.AnioMes) AnioMes
+    #         ,COALESCE(F1.canal, F2.canal) canal
+    #         ,COALESCE(F1.tipohabitacionuso_id, F2.tipohabitacionuso_id) tipohabitacionuso_id
+    #         ,COALESCE(F1.fechaventa, F2.fechaventa) fechaventa
+
+    #   FROM
+    #   (
+    #   select
+    #       reserv.hotel_id,
+    #       reserv.codreserva,
+    #       FORMAT_DATE("%Y-%m", reserv.fechaentrada) AnioMes,
+    #       reserv.fechaentrada,
+    #       reserv.canal,
+    #       reserv.tipohabitacionuso_id,
+    #       reserv.fechaventa
+    #   from  raw_excellence.pms_reserva reserv
+    #   WHERE reserv.estado IN (0,2,3)
+    #   AND DATE(reserv.fechaventa) <=  DATE({% date_start fecha_inicio %})
+    #   and reserv.fechaentrada BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
+    #       AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
+    #   ) F1
+    #   RIGHT OUTER JOIN
+    #   (
+    #   select
+    #       reserv.hotel_id,
+    #       reserv.codreserva,
+    #       FORMAT_DATE("%Y-%m", reserv.fechaentrada) AnioMes,
+    #       reserv.fechaentrada,
+    #       reserv.canal,
+    #       reserv.tipohabitacionuso_id,
+    #       reserv.fechaventa
+    #   from raw_excellence.pms_reserva reserv
+    #   where  reserv.estado IN (0,2,3)
+    #   AND DATE(reserv.fechaventa) <=  DATE({% date_end fecha_final %})
+    #   and reserv.fechaentrada BETWEEN  DATE_ADD(DATE_ADD(LAST_DAY(DATE ({% date_start fecha_inicio %})), INTERVAL  1 DAY),INTERVAL -1 MONTH)
+    #       AND LAST_DAY(DATE_ADD(DATE ({% date_start fecha_inicio %}), INTERVAL 6 MONTH))
+    #   ) F2
+    #   ON F1.codreserva = F2.codreserva
+            # ;;
   }
 
   filter: fecha_inicio{
