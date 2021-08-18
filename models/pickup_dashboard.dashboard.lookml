@@ -610,7 +610,7 @@
       pickup_analisis.aniomesentrada, pickup_analisis.dynamic_dim]
     pivots: [pickup_analisis.aniomesentrada]
     filters:
-      pickup_analisis.fecha_final: 2019/10/08
+      pickup_analisis.fecha_final: 2021/01/24
     sorts: [pickup_analisis.aniomesentrada, pickup_analisis.count_codreservaF1 desc 0]
     limit: 500
     show_view_names: false
@@ -746,7 +746,7 @@
   - name: Fecha Inicio
     title: Fecha Inicio
     type: field_filter
-    default_value: 2019/10/03
+    default_value: 2021/01/13
     allow_multiple_values: true
     required: true
     ui_config:
@@ -760,7 +760,7 @@
   - name: Fecha Final
     title: Fecha Final
     type: field_filter
-    default_value: 2019/10/07
+    default_value: 2021/01/24
     allow_multiple_values: true
     required: true
     ui_config:
