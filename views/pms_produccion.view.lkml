@@ -47,6 +47,7 @@ view: pms_produccion {
   dimension: concepto {
     type: string
     sql: ${TABLE}.concepto ;;
+    required_access_grants: [can_see_mail]
   }
 
   dimension: destino {
