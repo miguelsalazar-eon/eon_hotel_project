@@ -127,6 +127,7 @@ ON F1.codreserva = F2.codreserva ;;
     label: "Canal"
     type: string
     sql: ${TABLE}.canal ;;
+    required_access_grants: [can_see_mail]
   }
 
   dimension: tipohabitacionuso_id {
