@@ -12,6 +12,11 @@ datagroup: hotel_project_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+access_grant: can_see_mail {
+  user_attribute: can_see_mail
+  allowed_values: ["yes"]
+}
+
 persist_with: hotel_project_default_datagroup
 
 explore: maestro_habitacion {}

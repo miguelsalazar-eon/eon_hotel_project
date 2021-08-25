@@ -52,6 +52,7 @@ view: pms_produccion {
   dimension: destino {
     type: number
     sql: ${TABLE}.destino ;;
+    required_access_grants: [can_see_mail]
   }
 
   dimension: divisa_id {
