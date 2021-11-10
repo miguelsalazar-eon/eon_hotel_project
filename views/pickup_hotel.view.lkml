@@ -120,7 +120,7 @@ ON F1.codreserva = F2.codreserva ;;
     label: "Año Mes Ocupacion"
     type: date
     sql: DATE(CONCAT(${TABLE}.AnioMes,'-01')) ;;
-    html: {{ rendered_value | date: "%Y %B" }};;
+    html: {{ rendered_value | date: "%B" }};;
   }
 
   dimension: canal {
