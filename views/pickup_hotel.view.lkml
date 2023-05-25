@@ -153,7 +153,7 @@ ON F1.codreserva = F2.codreserva ;;
              when ${canal}='IND' then 'WHATSAPP'
              when ${canal}='CMP' then 'SITIO'
              when ${canal}='POS' then 'AGENCIAS' end;;
-    required_access_grants: [can_see_mail]
+    #required_access_grants: [can_see_mail]
   }
 
   dimension: tipohabitacionuso_id {
