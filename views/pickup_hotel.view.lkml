@@ -143,6 +143,19 @@ ON F1.codreserva = F2.codreserva ;;
     required_access_grants: [can_see_mail]
   }
 
+  dimension: canal_descripcion {
+    label: "Canal"
+    type: string
+    sql:case when ${canal}='TRN' then 'FACEBOOK'
+             when ${canal}='WED' then 'INSTAGRAM'
+             when ${canal}='GRP' then 'ISLAS'
+             when ${canal}='COMP' then 'CALL CENTER'
+             when ${canal}='IND' then 'WHATSAPP'
+             when ${canal}='CMP' then 'SITIO'
+             when ${canal}='POS' then 'AGENCIAS' end;;
+    required_access_grants: [can_see_mail]
+  }
+
   dimension: tipohabitacionuso_id {
     label: "Tipo Habitacion"
     type: string
@@ -237,7 +250,7 @@ ON F1.codreserva = F2.codreserva ;;
         {% if main_dim_selector._parameter_value == 'hotel_id' %}
           ${hotel_descripcion}
         {% elsif  main_dim_selector._parameter_value == 'canal' %}
-          ${canal}
+          ${canal_descripcion}
         {% else %}
           ${tipohabitacion_descripcion}
         {% endif %};;
