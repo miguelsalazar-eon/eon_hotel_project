@@ -104,6 +104,19 @@ ON F1.codreserva = F2.codreserva ;;
     drill_fields: [drill_group*]
   }
 
+  dimension: hotel_descripcion {
+    label: "Hotel"
+    type: string
+    sql: case when  ${hotel_id}='3401' then 'EMPORIO'
+              when  ${hotel_id}='34022' then 'SAM VALLARTA'
+              when  ${hotel_id}='3407' then 'EMPORIUM'
+              when  ${hotel_id}='3406' then 'BACOLI'
+              when  ${hotel_id}='34021' then 'KAAJAL'
+              when  ${hotel_id}='3403' then 'LA CEVICHERA'
+              when  ${hotel_id}='3409' then 'ORIENTAL' END;;
+    drill_fields: [drill_group*]
+  }
+
   dimension: codreservaF1 {
     label: "Codigo Reserva F1"
     type: string
@@ -217,4 +230,18 @@ ON F1.codreserva = F2.codreserva ;;
           ${tipohabitacionuso_id}
         {% endif %};;
   }
+
+  dimension: dynamic_dim2 {
+    label_from_parameter: main_dim_selector
+    sql:
+        {% if main_dim_selector._parameter_value == 'hotel_id' %}
+          ${hotel_descripcion}
+        {% elsif  main_dim_selector._parameter_value == 'canal' %}
+          ${canal}
+        {% else %}
+          ${tipohabitacion_descripcion}
+        {% endif %};;
+  }
+
+
 }
