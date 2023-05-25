@@ -136,6 +136,23 @@ ON F1.codreserva = F2.codreserva ;;
     sql: ${TABLE}.tipohabitacionuso_id ;;
   }
 
+
+  dimension: tipohabitacion_descripcion {
+    label: "Tipo Habitacion Detalle"
+    type: string
+    sql: case when  ${TABLE}.tipohabitacionuso_id ='PLT' then 'PLATINO'
+              when  ${TABLE}.tipohabitacionuso_id ='STD' then 'ESTANDAR'
+              when  ${TABLE}.tipohabitacionuso_id ='DIA' then 'CLUB JUNIOR'
+              when  ${TABLE}.tipohabitacionuso_id ='SUI' then 'JUNIOR SUITE'
+              when  ${TABLE}.tipohabitacionuso_id ='DIAH' then 'CLUB HONEYMOON'
+              when  ${TABLE}.tipohabitacionuso_id ='STDH' then 'SUITE CON TERRAZA'
+              when  ${TABLE}.tipohabitacionuso_id ='SUIH' then 'SUITE CON VISTA MAR'
+              when  ${TABLE}.tipohabitacionuso_id ='BAS' then 'CLUB IMPERIAL'
+              when  ${TABLE}.tipohabitacionuso_id ='PMAS' then 'JUNIOR SUITE CON VISTA AL MAR'
+              when  ${TABLE}.tipohabitacionuso_id ='SUP' then 'SUITE DE DOS PLANTAS' end
+;;
+  }
+
   dimension: fechaventa {
     label: "Fecha de Venta"
     type: date
